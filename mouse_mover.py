@@ -3,6 +3,7 @@ import keyboard
 import threading
 import time
 import random
+import sys
 
 # Флаг для управления движением мыши
 active = False
@@ -33,7 +34,7 @@ def stop_moving():
 def stop_programm():
     global active
     active = False
-    exit()
+    sys.exit()
 
 # Слушаем сочетания клавиш
 keyboard.add_hotkey('shift+f8', start_moving)
