@@ -14,8 +14,8 @@ def move_mouse():
             # Получаем текущие координаты курсора
             x, y = pyautogui.position()
             # Случайные смещения
-            dx = random.randint(-10, 10)
-            dy = random.randint(-10, 10)
+            dx = random.randint(-20, 20)
+            dy = random.randint(-20, 20)
             # Перемещаем мышь
             pyautogui.moveRel(dx, dy, duration=0.1)
             time.sleep(1)  # Задержка между движениями
