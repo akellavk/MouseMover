@@ -3,7 +3,7 @@ import keyboard
 import threading
 import time
 import random
-import sys
+import os
 
 # Флаг для управления движением мыши
 active = False
@@ -31,15 +31,11 @@ def stop_moving():
     active = False
     print("Движение мыши остановлено.")
 
-def stop_programm():
-    global active
-    active = False
-    sys.exit()
 
 # Слушаем сочетания клавиш
 keyboard.add_hotkey('shift+f8', start_moving)
 keyboard.add_hotkey('shift+f12', stop_moving)
-keyboard.add_hotkey('shift+ctrl+f12', stop_programm)
+keyboard.add_hotkey('shift+ctrl+f12', lambda: os._exit(0))
 
 # Запускаем поток для движения мыши
 thread = threading.Thread(target=move_mouse, daemon=True)
