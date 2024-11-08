@@ -31,7 +31,7 @@ def stop_moving():
     print("Движение мыши остановлено.")
 
 # Слушаем сочетания клавиш
-keyboard.add_hotkey('shift+f11', start_moving)
+keyboard.add_hotkey('shift+f8', start_moving)
 keyboard.add_hotkey('shift+f12', stop_moving)
 
 # Запускаем поток для движения мыши
