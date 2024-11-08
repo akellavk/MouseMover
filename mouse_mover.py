@@ -4,9 +4,13 @@ import threading
 import time
 import random
 import os
+import ctypes
 
 # Флаг для управления движением мыши
 active = False
+
+def prevent_sleep():
+    ctypes.windll.kernel32.SetThreadExecutionState(0x80000002 | 0x00000001)
 
 def move_mouse():
     global active
@@ -15,15 +19,16 @@ def move_mouse():
             # Получаем текущие координаты курсора
             x, y = pyautogui.position()
             # Случайные смещения
-            dx = random.randint(-20, 20)
-            dy = random.randint(-20, 20)
+            dx = random.randint(-1, 1)
+            dy = random.randint(-1, 1)
             # Перемещаем мышь
-            pyautogui.moveRel(dx, dy, duration=0.1)
+            pyautogui.moveRel(dx, dy, duration=0.5, tween=pyautogui.easeInQuad)
             time.sleep(1)  # Задержка между движениями
 
 def start_moving():
     global active
     active = True
+    prevent_sleep()
     print("Мышь начала двигаться.")
 
 def stop_moving():
